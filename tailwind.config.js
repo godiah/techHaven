@@ -13,8 +13,19 @@ export default {
     darkMode: "class", //Disables dark mode
     theme: {
         extend: {
+            colors: {
+                primary: "#0A84FF", // Bright Tech Blue
+                secondary: "#141414", // Deep Black
+                accent: "#FF6B00", // Electric Orange
+                success: "#4ADE80", // Neon Green
+                background: "#F5F5F5", // Soft Light Gray
+                border: "#E0E0E0", // Light Gray
+                text: "#212121", // Dark Gray
+            },
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                heading: ["Montserrat", "sans-serif"], // Modern & Clean
+                body: ["Lato", "sans-serif"], // Readable & Versatile
+                serif: ["Merriweather", "serif"], // Classic Elegance
             },
         },
     },
