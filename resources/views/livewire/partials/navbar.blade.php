@@ -16,7 +16,7 @@
                 <!-- Mobile Hamburger Button -->
                 <div class="md:hidden">
                     <button type="button"
-                        class="hs-collapse-toggle flex justify-center items-center w-9 h-9 text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+                        class="hs-collapse-toggle flex justify-center items-center w-9 h-9 text-sm font-semibold rounded-lg text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
                         data-hs-collapse="#navbar-collapse-with-animation-medium"
                         aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
                         <svg class="hs-collapse-open:hidden flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@
                 <!-- Tablet Hamburger Button -->
                 <div class="hidden md:block lg:hidden md:order-1 md:mr-5">
                     <button type="button"
-                        class="hs-collapse-toggle flex justify-center items-center w-9 h-9 text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+                        class="hs-collapse-toggle flex justify-center items-center w-9 h-9 text-sm font-semibold rounded-lg text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
                         data-hs-collapse="#navbar-collapse-with-animation-large"
                         aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
                         <svg class="hs-collapse-open:hidden flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
@@ -68,76 +68,32 @@
                         class="flex flex-col md:flex-row md:items-center md:justify-between gap-x-0 mt-5 divide-y divide-dashed divide-gray-200 md:mt-0 md:divide-y-0 md:divide-solid dark:divide-gray-700">
                         <!-- Center Section: Main Navigation -->
                         <div class="flex flex-col md:flex-row md:items-center md:mx-auto gap-x-7 nav-small">
-                            <a class="text-accent py-3 md:py-6" href="/" aria-current="page">Home</a>
-                            <a class=" text-secondary hover:text-accent/55 py-3 md:py-6" href="/about-us">About
+                            <a wire:navigate
+                                class="{{ request()->is('/') ? 'text-accent' : 'text-secondary' }} py-3 md:py-6"
+                                href="/" aria-current="page">Home</a>
+                            <a wire:navigate
+                                class="{{ request()->is('about-us') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3 md:py-6"
+                                href="/about-us">About
                                 Us</a>
-
                             <!-- Categories Dropdown -->
-                            <div class="hs-dropdown [--strategy:static] sm:[--strategy:absolute] [--adaptive:none]">
-                                <button type="button"
-                                    class="hs-dropdown-toggle sm:p-2 flex items-center w-full text-secondary hover:text-accent/55">
-                                    Categories
-                                    <svg class="ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m6 9 6 6 6-6" />
-                                    </svg>
-                                </button>
-                                <div class="hs-dropdown-menu sm:transition-[opacity,margin] sm:ease-in-out sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-full hidden z-10 top-full start-0 min-w-60 bg-white sm:shadow-md rounded-lg py-2 sm:px-2 dark:bg-neutral-800 sm:dark:border dark:border-neutral-700 dark:divide-neutral-700 before:absolute"
-                                    role="menu" aria-orientation="vertical"
-                                    aria-labelledby="hs-mega-menu-categories">
-                                    <div class="sm:grid sm:grid-cols-2 gap-4 px-4 py-2">
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/categories/laptop">Laptop</a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent  focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/categories/tvs">TVs</a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/categories/smartphones">Smartphones</a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/categories/tablets">Tablets</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Brands Dropdown -->
-                            <div x-data="{ open: false }"
-                                class="hs-dropdown [--strategy:static] sm:[--strategy:absolute] [--adaptive:none]">
-                                <button type="button" @click="open = !open"
-                                    class="hs-dropdown-toggle sm:p-2 flex items-center w-full text-secondary hover:text-accent/55">
-                                    Brands
-                                    <svg :class="{ 'rotate-180': open }" class="ms-2 w-4 h-4"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m6 9 6 6 6-6" />
-                                    </svg>
-                                </button>
-                                <div class="hs-dropdown-menu sm:transition-[opacity,margin] sm:ease-in-out sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-full hidden z-10 top-full start-0 min-w-60 bg-white sm:shadow-md rounded-lg py-2 sm:px-2 dark:bg-neutral-800 sm:dark:border dark:border-neutral-700 dark:divide-neutral-700 before:absolute"
-                                    role="menu" aria-orientation="vertical" aria-labelledby="hs-mega-menu-brands">
-                                    <div class="sm:grid sm:grid-cols-2 gap-4">
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent  focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/brands/apple">Apple</a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/brands/samsung">Samsung</a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent  focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/brands/tcl">TCL</a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent  focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/brands/oneplus">OnePlus</a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-secondary hover:text-accent  focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                                            href="/brands/xiaomi">Xiaomi</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <a wire:navigate
+                                class="{{ request()->is('categories') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3 md:py-6"
+                                href="/categories">Categories</a>
                             {{-- Products --}}
-                            <a class="text-secondary hover:text-accent/55 py-3 md:py-6" href="/products">Products</a>
+                            <a wire:navigate
+                                class="{{ request()->is('products') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3 md:py-6"
+                                href="/products">Products</a>
                             {{-- Contact Us --}}
-                            <a class="text-secondary hover:text-accent/55  py-3 md:py-6" href="/contact-us">Contact
+                            <a wire:navigate
+                                class="{{ request()->is('contact-us') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55  py-3 md:py-6"
+                                href="/contact-us">Contact
                                 Us</a>
                         </div>
 
                         <!-- Right Section: Cart and Login -->
                         <div class="flex flex-col md:flex-row md:items-center gap-x-2 nav-right-small">
-                            <a class="flex items-center  text-secondary hover:text-accent/55 py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                            <a wire:navigate
+                                class="{{ request()->is('cart') ? 'text-accent' : 'text-secondary' }} flex items-center  hover:text-accent/55 py-3 md:py-6"
                                 href="/cart">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="flex-shrink-0 w-5 h-5 mr-1">
@@ -152,7 +108,8 @@
                             <span class="text-secondary text-xl">|</span>
                             {{-- Log In --}}
                             <div class="pt-3 md:pt-0">
-                                <a class="py-2.5 px-4 inline-flex items-center gap-x-2 text-secondary hover:text-accent  disabled:opacity-50 disabled:pointer-events-none transition duration-300 ease-in-out transform  hover:border hover:border-accent"
+                                <a wire:navigate
+                                    class="py-2.5 px-4 inline-flex items-center gap-x-2 text-secondary hover:text-accent  disabled:opacity-50 disabled:pointer-events-none transition duration-300 ease-in-out transform  hover:border hover:border-accent"
                                     href="/login">
                                     <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -178,24 +135,26 @@
                         class="flex flex-col md:flex-row md:items-center md:justify-between gap-x-0 mt-5 divide-y divide-dashed divide-gray-200 md:mt-0 md:divide-y-0 md:divide-solid dark:divide-gray-700">
                         <!-- Center Section: Main Navigation -->
                         <div class="flex flex-col md:flex-row md:items-center md:mx-auto gap-x-7">
-                            <a class="text-accent py-3 md:py-6" href="/" aria-current="page">Home</a>
-                            <a class=" text-secondary hover:text-accent/55 py-3 md:py-6" href="/about-us">About
+                            <a class="{{ request()->is('/') ? 'text-accent' : 'text-secondary' }} py-3 md:py-6"
+                                href="/" aria-current="page">Home</a>
+                            <a class=" {{ request()->is('about-us') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3 md:py-6"
+                                href="/about-us">About
                                 Us</a>
                             <!-- Categories -->
-                            <a class=" text-secondary hover:text-accent/55 py-3 md:py-6"
+                            <a class=" {{ request()->is('categories') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3 md:py-6"
                                 href="/categories">Categories</a>
-                            <!-- Brands  -->
-                            <a class=" text-secondary hover:text-accent/55 py-3 md:py-6" href="/brands">Brands</a>
                             {{-- Products --}}
-                            <a class="text-secondary hover:text-accent/55 py-3 md:py-6" href="/products">Products</a>
+                            <a class="{{ request()->is('products') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3 md:py-6"
+                                href="/products">Products</a>
                             {{-- Contact Us --}}
-                            <a class="text-secondary hover:text-accent/55  py-3 md:py-6" href="/contact-us">Contact
+                            <a class="{{ request()->is('contact-us') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55  py-3 md:py-6"
+                                href="/contact-us">Contact
                                 Us</a>
                         </div>
 
                         <!-- Right Section: Cart and Login -->
                         <div class="flex flex-col gap-x-2">
-                            <a class="flex items-center  text-secondary hover:text-accent/55 py-3  dark:text-gray-400 dark:hover:text-gray-500"
+                            <a class="{{ request()->is('cart') ? 'text-accent' : 'text-secondary' }} flex items-center hover:text-accent/55 py-3  dark:text-gray-400 dark:hover:text-gray-500"
                                 href="/cart">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="flex-shrink-0 w-5 h-5 mr-1">
@@ -229,18 +188,22 @@
 
             <!-- Navigation Links Container 768px < screens < 1024px -->
             <div id="navbar-collapse-with-animation-large"
-                class="absolute left-0 top-full mt-2 shadow-md font-heading font-medium tracking-wide hs-collapse overflow-hidden transition-all duration-300 w-full lg:hidden">
+                class="hidden  lg:hidden absolute left-0 top-full mt-2 shadow-md font-heading font-medium tracking-wide hs-collapse overflow-hidden transition-all duration-300 w-full">
                 <div class="bg-white dark:bg-gray-900 shadow-md p-4 overflow-hidden overflow-y-auto max-h-[75vh]">
                     <div class="flex flex-col gap-y-4 divide-y divide-dashed divide-gray-200 dark:divide-gray-700">
 
                         <!-- Center Section: Main Navigation -->
                         <div class="flex flex-col gap-y-2">
-                            <a class="text-accent py-3" href="/" aria-current="page">Home</a>
-                            <a class="text-secondary hover:text-accent/55 py-3" href="/about-us">About Us</a>
-                            <a class="text-secondary hover:text-accent/55 py-3" href="/categories">Categories</a>
-                            <a class="text-secondary hover:text-accent/55 py-3" href="/brands">Brands</a>
-                            <a class="text-secondary hover:text-accent/55 py-3" href="/products">Products</a>
-                            <a class="text-secondary hover:text-accent/55 py-3" href="/contact-us">Contact Us</a>
+                            <a class="{{ request()->is('/') ? 'text-accent' : 'text-secondary' }} py-3"
+                                href="/" aria-current="page">Home</a>
+                            <a class="{{ request()->is('about-us') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3"
+                                href="/about-us">About Us</a>
+                            <a class="{{ request()->is('categories') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3"
+                                href="/categories">Categories</a>
+                            <a class="{{ request()->is('products') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3"
+                                href="/products">Products</a>
+                            <a class="{{ request()->is('contact-us') ? 'text-accent' : 'text-secondary' }} hover:text-accent/55 py-3"
+                                href="/contact-us">Contact Us</a>
                         </div>
                     </div>
                 </div>

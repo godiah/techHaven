@@ -1,7 +1,10 @@
 <div>
     {{-- Hero Section Begin --}}
-    <div class="relative w-full">
-        <div class="bg-[#FCF8F1] bg-opacity-30 py-8 sm:py-12 lg:py-12">
+    <div class="relative min-h-screen bg-cover  bg-center"
+        style="background-image: url('{{ asset('images/bg-grad-1.png') }}');">
+        <!-- Overlay -->
+        {{-- <div class="absolute inset-0 bg-black/60"></div> --}}
+        <div class="bg-[#FCF8F1] bg-opacity-30 py-8 sm:py-12 lg:py-12 min-h-screen">
             <div class=" px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
                     <div>
@@ -45,14 +48,7 @@
                             </a>
                         </div>
                     </div>
-
-                    <div class="relative" style="height: calc(100vh - 80px);">
-                        <img class="w-full h-full object-cover" src="{{ asset('images/hero-main.jpeg') }}"
-                            alt="Hero Image" />
-                    </div>
-
                 </div>
-
             </div>
         </div>
         {{-- <div class="custom-shape-divider-bottom-1739880734">
