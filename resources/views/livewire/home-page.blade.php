@@ -106,7 +106,8 @@
                             </div>
 
                             <figcaption class="p-2 w-full space-y-2">
-                                <a href="#" class="font-heading font-bold tracking-tight text-secondary block">
+                                <a href="/products?selected_brands[0]={{ $brand->id }}"
+                                    class="font-heading font-bold tracking-tight text-secondary block">
                                     <div
                                         class="py-1 flex items-center text-lg text-gray-800  before:flex-1 before:border-t before:border-gray-200 before:me-6 
                                     after:flex-1 after:border-t after:border-gray-200 after:ms-6 
@@ -131,7 +132,7 @@
                                 </div>
 
                                 <div class="flex justify-center gap-4 pt-2 pb-2">
-                                    <a href="#"
+                                    <a href="/products?selected_brands[0]={{ $brand->id }}"
                                         class="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-accent">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"
                                             fill="none" stroke="currentColor" stroke-width="2">
@@ -183,7 +184,7 @@
                 @foreach ($categories as $category)
                     <a wire:key="{{ $category->id }}"
                         class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-xl transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                        href="#">
+                        href="/products?selected_categories[0]={{ $category->id }}">
                         <div class="p-4 md:p-5">
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center">
