@@ -10,8 +10,7 @@
                     </a>
                 </div>
 
-                <p
-                    class="font-body mt-6 max-w-md text-center text-sm leading-relaxed text-gray-600 sm:max-w-xs sm:text-left">
+                <p class="font-body mt-6 max-w-md text-center text-base leading-relaxed text-secondary sm:text-justify">
                     TechHaven is your trusted hub for the latest in consumer electronics.
                     Discover our wide range of cutting-edge gadgets, devices, and accessories designed to enhance your
                     digital lifestyle.
@@ -85,19 +84,19 @@
 
                     <ul class="mt-8 space-y-4 text-sm">
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 Company History
                             </a>
                         </li>
 
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 Meet the Team
                             </a>
                         </li>
 
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 Employee Handbook
                             </a>
                         </li>
@@ -109,19 +108,19 @@
 
                     <ul class="mt-8 space-y-4 text-sm">
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 Repair & Maintenance
                             </a>
                         </li>
 
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 Internet Connection
                             </a>
                         </li>
 
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 Marketing
                             </a>
                         </li>
@@ -133,16 +132,24 @@
 
                     <ul class="mt-8 space-y-4 text-sm">
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 FAQs
                             </a>
                         </li>
 
                         <li>
-                            <a class="font-body text-gray-600 transition hover:text-gray-600/75" href="#">
+                            <a class="font-body text-text transition hover:text-gray-600/75" href="#">
                                 Support
                             </a>
                         </li>
+                        @auth
+                            <li>
+                                <a wire:navigate class="font-body text-text transition hover:text-gray-600/75"
+                                    href="/my-account">
+                                    My Account
+                                </a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
 
@@ -159,7 +166,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <span class="font-body text-gray-700 dark:text-gray-300">john@doe.com</span>
+                                <span class="font-body text-text dark:text-gray-300">john@doe.com</span>
                             </a>
                         </li>
 
@@ -174,7 +181,7 @@
                                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
 
-                                <span class="font-body text-gray-700 dark:text-gray-300">0123456789</span>
+                                <span class="font-body text-text dark:text-gray-300">0123456789</span>
                             </a>
                         </li>
 
@@ -189,7 +196,7 @@
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
 
-                            <address class="-mt-0.5 font-body text-gray-700 not-italic dark:text-gray-300">
+                            <address class="-mt-0.5 font-body text-text not-italic dark:text-gray-300">
                                 213 Lane, Nbi, Kenya
                             </address>
                         </li>
@@ -198,7 +205,7 @@
             </div>
         </div>
 
-        <div class="font-body mt-12 border-t border-gray-300 pt-6 dark:border-gray-800">
+        <div class="font-body mt-12 border-t border-gray-300 pt-6 sm:px-4 dark:border-gray-800">
             <div class="text-center sm:flex sm:justify-between sm:text-left">
                 <p class="text-sm text-gray-500 dark:text-gray-400">
                     <span class="block sm:inline">All rights reserved.</span>

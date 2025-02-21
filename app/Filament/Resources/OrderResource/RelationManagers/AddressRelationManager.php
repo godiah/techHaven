@@ -63,7 +63,7 @@ class AddressRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('estate')
             ->columns([
-                TextColumn::make('fullname')
+                TextColumn::make('full_name')
                     ->label('Full Name'),
                 TextColumn::make('email')
                     ->label('Email'),

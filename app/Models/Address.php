@@ -32,13 +32,13 @@ class Address extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function fullName()
+    public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function fullAddress()
+    public function getFullAddressAttribute()
     {
-        return $this->house_no . ', ' . $this->estate . ', ' . $this->town . ', ' . $this->county;
+        return $this->house_no . ', ' . $this->estate . ', ' . $this->town;
     }
 }
