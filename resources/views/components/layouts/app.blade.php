@@ -23,13 +23,23 @@
 </head>
 
 <body class="bg-background flex flex-col min-h-screen">
-    @livewire('partials.navbar')
+    @unless (request()->routeIs('login') ||
+            request()->routeIs('register') ||
+            request()->routeIs('password.request') ||
+            request()->routeIs('password.reset'))
+        @livewire('partials.navbar')
+    @endunless
 
     <main class="flex-grow">
         {{ $slot }}
     </main>
 
-    @livewire('partials.footer')
+    @unless (request()->routeIs('login') ||
+            request()->routeIs('register') ||
+            request()->routeIs('password.request') ||
+            request()->routeIs('password.reset'))
+        @livewire('partials.footer')
+    @endunless
 
     @livewireScripts
 

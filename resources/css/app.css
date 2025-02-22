@@ -49,6 +49,30 @@
     fill: #d38a10ad;
 }
 
+/* Sign in page */
+
+.custom-shape-divider-bottom-1740206340 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1740206340 svg {
+    position: relative;
+    display: block;
+    width: calc(118% + 1.3px);
+    height: 59px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1740206340 .shape-fill {
+    fill: #fb923c;
+}
+
 @media (min-width: 1024px) and (max-width: 1120px) {
     .nav-small {
         font-size: 0.825rem !important;
