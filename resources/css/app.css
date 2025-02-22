@@ -87,3 +87,50 @@
         gap: 0.5rem !important;
     }
 }
+
+@media (min-width: 1024px) and (max-width: 1140px) {
+    .custom-image-container {
+        display: grid !important;
+        grid-template-columns: repeat(
+            3,
+            1fr
+        ) !important; /* Creates 3 equal columns */
+        gap: 20px !important; /* Adds equal spacing between grid items */
+    }
+}
+
+.spinner {
+    width: 9px;
+    height: 9px;
+    position: relative;
+}
+
+.spinner div {
+    position: absolute;
+    width: 50%;
+    height: 150%;
+    background: #ff6b00;
+    transform: rotate(calc(var(--rotation) * 1deg))
+        translate(0, calc(var(--translation) * 1%));
+    animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
+}
+
+@keyframes spinner-fzua35 {
+    0%,
+    10%,
+    20%,
+    30%,
+    50%,
+    60%,
+    70%,
+    80%,
+    90%,
+    100% {
+        transform: rotate(calc(var(--rotation) * 1deg))
+            translate(0, calc(var(--translation) * 1%));
+    }
+    50% {
+        transform: rotate(calc(var(--rotation) * 1deg))
+            translate(0, calc(var(--translation) * 1.5%));
+    }
+}

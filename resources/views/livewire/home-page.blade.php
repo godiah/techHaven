@@ -73,9 +73,9 @@
         <div class="max-w-4xl mx-auto">
             <div class="px-4 text-center ">
                 <div class="relative flex flex-col items-center">
-                    <h1 class="font-heading text-3xl font-bold text-secondary sm:text-4xl xl:text-4xl"> Browse
-                        Popular<span class="gradient-text">
-                            Brands
+                    <h1 class="font-heading text-3xl font-bold text-secondary sm:text-4xl xl:text-4xl"> Shop By<span
+                            class="gradient-text">
+                            Brand
                         </span> </h1>
                     <div class="flex w-40 mt-4 mb-6 overflow-hidden rounded">
                         <div class="flex-1 h-2 bg-[#ffc107]">
@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-2">
+            <div class="grid grid-cols-2 gap-6 lg:grid-cols-4 md:grid-cols-2">
 
                 @foreach ($brands as $brand)
                     <div wire:key={{ $brand->id }}
@@ -102,21 +102,21 @@
                             {{-- Image container --}}
                             <div class="flex justify-center w-full overflow-hidden">
                                 <img src="{{ url('storage', $brand->image) }}" alt="{{ $brand->name }}"
-                                    class="object-contain rounded-t-lg w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
+                                    class="object-contain rounded-t-lg w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-40">
                             </div>
 
                             <figcaption class="p-2 w-full space-y-2">
-                                <a href="/products?selected_brands[0]={{ $brand->id }}"
+                                <a wire:navigate href="{{ route('brands.show', $brand->slug) }}"
                                     class="font-heading font-bold tracking-tight text-secondary block">
                                     <div
-                                        class="py-1 flex items-center text-lg text-gray-800  before:flex-1 before:border-t before:border-gray-200 before:me-6 
+                                        class="py-1 flex items-center text-sm sm:text-lg text-gray-800  before:flex-1 before:border-t before:border-gray-200 before:me-6 
                                     after:flex-1 after:border-t after:border-gray-200 after:ms-6 
-                                    dark:text-white dark:before:border-neutral-600 dark:after:border-neutral-600">
+                                    dark:text-white dark:before:border-neutral-600 dark:after:border-neutral-600 -mt-6">
                                         {{ $brand->name }}
                                     </div>
                                 </a>
 
-                                <div class="font-body flex flex-wrap justify-center gap-1">
+                                <div class="hidden md:flex font-body flex-wrap justify-center gap-1">
                                     <span
                                         class="items-center px-3 py-1 rounded-full text-base sm:text-xs md:text-sm lg:text-xs bg-gray-100 text-gray-800">
                                         Phones
@@ -131,9 +131,9 @@
                                     </span>
                                 </div>
 
-                                <div class="flex justify-center gap-4 pt-2 pb-2">
-                                    <a href="/products?selected_brands[0]={{ $brand->id }}"
-                                        class="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-accent">
+                                <div class="flex justify-center md:gap-4 md:pt-2 pb-2">
+                                    <a wire:navigate href="{{ route('brands.show', $brand->slug) }}"
+                                        class="inline-flex items-center gap-1 text-sm text-primary hover:text-accent">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"
                                             fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
