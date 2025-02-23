@@ -55,6 +55,12 @@ class ProductResource extends Resource
                             ->unique(Product::class, 'slug', ignoreRecord: true)
                             ->maxLength(255),
 
+                        TextInput::make('short_description')
+                            ->label('Short Description')
+                            ->placeholder('Provide a brief description of the product [Maximum of 50 Characters]')
+                            ->columnSpanFull()
+                            ->maxLength(50),
+
                         MarkdownEditor::make('description')
                             ->label('Description')
                             ->placeholder('Provide a description of the product.')

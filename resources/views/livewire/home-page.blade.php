@@ -150,6 +150,18 @@
 
             </div>
         </div>
+        <div class="flex justify-end max-w-6xl px-4 py-4 mx-auto font-heading">
+            <a wire:navigate href="/brands"
+                class="group inline-flex items-center gap-1 text-sm underline decoration-1 text-accent hover:text-primary">
+                <span>See more brands</span>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-200"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </a>
+        </div>
     </section>
     {{-- Brands Section End --}}
 

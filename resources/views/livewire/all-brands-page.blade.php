@@ -1,6 +1,6 @@
 <div class="w-full max-w-[85rem] py-6 px-4 sm:px-6 lg:px-8 mx-auto">
     <!-- Bread Crumb -->
-    <div class="p-4 font-heading">
+    <div class="font-heading p-4">
         <ol class="flex items-center whitespace-nowrap">
             <li class="inline-flex items-center">
                 <a wire:navigate
@@ -26,8 +26,8 @@
             </li>
         </ol>
     </div>
-    <div class="px-4 mx-auto max-w-7xl md:px-6">
-        <div class="grid grid-cols-2 gap-6 lg:grid-cols-4 md:grid-cols-2">
+    <div class="px-4 mx-auto max-w-7xl">
+        <div class="grid grid-cols-2 gap-5 lg:grid-cols-4 md:grid-cols-2 font-body">
             @foreach ($brands as $brand)
                 <div wire:key={{ $brand->id }}
                     class="bg-white rounded-lg shadow-md transition-transform transform hover:shadow-xl">
@@ -64,7 +64,7 @@
                                 </span>
                             </div>
 
-                            <div class="flex justify-center md:gap-4 md:pt-2 pb-2">
+                            <div class="flex justify-center md:gap-4 md:pt-2 pb-2 text-sm">
                                 <a wire:navigate href="{{ route('brands.show', $brand->slug) }}"
                                     class="inline-flex items-center gap-1 text-sm text-primary hover:text-accent">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"

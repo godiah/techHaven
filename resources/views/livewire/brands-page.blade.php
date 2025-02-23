@@ -135,13 +135,29 @@
                         </div>
                     </div>
 
+                    <div class="flex justify-end m-2 font-body">
+                        @if (!empty($selected_categories || $sortBy != 'latest'))
+                            <button type="button" wire:click="resetFilters"
+                                class="group inline-flex items-center text-sm font-semibold text-accent hover:underline transition-colors duration-200">
+                                Reset All Filters
+                                <svg class="ml-1 w-5 h-5 transition-transform duration-200 transform group-hover:rotate-90"
+                                    stroke="currentColor" fill="currentColor" viewBox="0 0 512 512"
+                                    data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M64,256H34A222,222,0,0,1,430,118.15V85h30V190H355V160h67.27A192.21,192.21,0,0,0,256,64C150.13,64,64,150.13,64,256Zm384,0c0,105.87-86.13,192-192,192A192.21,192.21,0,0,1,89.73,352H157V322H52V427H82V393.85A222,222,0,0,0,478,256Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        @endif
+                    </div>
+
                     <!-- Products Grid -->
                     <div wire:loading.class="opacity-50"
                         class="mb-4 grid gap-4 transition-opacity duration-300 sm:grid-cols-2 md:mb-8 lg:grid-cols-4 custom-image-container">
                         @if ($products->count())
                             @foreach ($products as $product)
                                 <div wire:key="{{ $product->id }}"
-                                    class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                                    class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                                     <div
                                         class="mx-auto flex items-center justify-center w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-40 lg:h-40 overflow-hidden aspect">
                                         <a wire:navigate href="/products/{{ $product->slug }}">
@@ -149,7 +165,7 @@
                                                 alt="{{ $product->name }}" class="object-contain w-full h-full">
                                         </a>
                                     </div>
-                                    <div class="pt-2">
+                                    <div class="pt-2 flex flex-col flex-grow">
                                         <div class="font-body mb-3 flex items-center justify-between gap-4">
                                             <span
                                                 class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800/30 dark:text-blue-500">
@@ -182,32 +198,35 @@
                                             {{ $product->name }}
                                         </a>
                                         <p class="font-body mt-1 text-xs text-primary">
-                                            1TB HDD, Retina 5K Display, M3 Max
-                                        </p>
-                                        <hr class="w-6 h-0.5 mx-auto my-2 bg-gray-400 border-0 rounded-sm">
-                                        <p
-                                            class="font-body text-sm font-semibold leading-tight mt-2 mb-2 text-gray-900 dark:text-white text-start">
-                                            {{ Number::currency($product->price, 'Ksh.') }}
+                                            {{ $product->short_description }}
                                         </p>
 
-                                        <div class="w-full mt-2">
-                                            <a wire:click.prevent='addToCart({{ $product->id }})' href="#"
-                                                class="w-full inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-medium bg-accent text-white hover:bg-accent/75 hover:shadow-lg transition duration-300 ease-in-out">
-                                                <svg class="mr-2 h-5 w-5" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
-                                                </svg>
-                                                <span wire:loading.remove
-                                                    wire:target='addToCart({{ $product->id }})'>
-                                                    Add to Cart
-                                                </span>
-                                                <span wire:loading wire:target='addToCart({{ $product->id }})'>
-                                                    Adding . . .
-                                                </span>
-                                            </a>
+                                        <div class="mt-auto">
+                                            <hr class="w-6 h-0.5 mx-auto my-2 bg-gray-400 border-0 rounded-sm">
+                                            <p
+                                                class="font-body text-sm font-semibold leading-tight mt-2 mb-2 text-gray-900 dark:text-white text-start">
+                                                {{ Number::currency($product->price, 'Ksh.') }}
+                                            </p>
+
+                                            <div class="w-full mt-2">
+                                                <a wire:click.prevent='addToCart({{ $product->id }})' href="#"
+                                                    class="w-full inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-medium bg-accent text-white hover:bg-accent/75 hover:shadow-lg transition duration-300 ease-in-out">
+                                                    <svg class="mr-2 h-5 w-5" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        height="24" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
+                                                    </svg>
+                                                    <span wire:loading.remove
+                                                        wire:target='addToCart({{ $product->id }})'>
+                                                        Add to Cart
+                                                    </span>
+                                                    <span wire:loading wire:target='addToCart({{ $product->id }})'>
+                                                        Adding . . .
+                                                    </span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
