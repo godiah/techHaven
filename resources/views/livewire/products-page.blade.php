@@ -313,7 +313,7 @@
                                                 {{ Number::currency($product->price, 'Ksh.') }}
                                             </p>
 
-                                            <div class="w-full mt-2">
+                                            <div class="w-full mt-2 font-heading">
                                                 <a wire:click.prevent='addToCart({{ $product->id }})' href="#"
                                                     class="w-full inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-medium bg-accent text-white hover:bg-accent/75 hover:shadow-lg transition duration-300 ease-in-out">
                                                     <svg class="mr-2 h-5 w-5" aria-hidden="true"

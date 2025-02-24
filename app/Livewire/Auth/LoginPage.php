@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Helpers\CartManagement;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Title;
@@ -15,6 +16,7 @@ class LoginPage extends Component
 
     public $email;
     public $password;
+    public $cart_items = [];
 
     public function mount()
     {
@@ -26,6 +28,8 @@ class LoginPage extends Component
                 'toast'   => $alert['toast'],
             ]);
         }
+
+        $this->cart_items = CartManagement::getCartItemsFromCookie();
     }
 
     public function save(){
@@ -39,7 +43,10 @@ class LoginPage extends Component
             return;
         }
 
-        session()->flash('alert', [
+        $cart_items = CartManagement::getCartItemsFromCookie();
+
+        if(empty($cart_items)){
+            session()->flash('alert', [
             'type' => 'success',
             'message' => 'Signed in successfully!',
             'position' => 'top-end',
@@ -47,7 +54,21 @@ class LoginPage extends Component
             'toast' => true,
         ]);
 
-        return redirect()->intended();
+        return redirect()->intended('/');
+        }
+        else{
+            session()->flash('alert', [
+            'type' => 'success',
+            'message' => 'Signed in successfully!',
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+        ]);
+
+        return redirect()->intended('/checkout');
+        }
+
+        
     }
     public function render()
     {

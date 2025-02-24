@@ -23,9 +23,11 @@ export default {
                 text: "#212121", // Dark Gray
             },
             fontFamily: {
-                heading: ["Montserrat", "sans-serif"], // Modern & Clean
-                body: ["Lato", "sans-serif"], // Readable & Versatile
-                serif: ["Merriweather", "serif"], // Classic Elegance
+                heading: ["Montserrat", "sans-serif"],
+                body: ["Lato", "sans-serif"],
+                serif: ["Merriweather", "serif"],
+                details: ['"Plus Jakarta Sans"'],
+                inter: ["Inter", "system-ui", "sans-serif"],
             },
         },
     },

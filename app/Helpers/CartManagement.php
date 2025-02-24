@@ -23,11 +23,12 @@ class CartManagement {
             $cart_items[$existing_item]['quantity']++;
             $cart_items[$existing_item]['total_amount'] = $cart_items[$existing_item]['quantity'] * $cart_items[$existing_item]['unit_amount'];
         } else {
-            $product = Product::where('id', $product_id)->first(['id','name','price','featured_image']);
+            $product = Product::where('id', $product_id)->first(['id','name','slug','price','featured_image']);
             if($product){
                 $cart_items[] = [
                     'product_id' => $product_id,
                     'name' => $product->name,
+                    'slug' => $product->slug,
                     'featured_image' => $product->featured_image,
                     'quantity' => 1,
                     'unit_amount' => $product->price,
@@ -41,7 +42,7 @@ class CartManagement {
     }
 
     // add item to cart with quantity
-    static public function addItemToCartWithQty($product_id, $qty = 1){
+    static public function addItemToCartWithQty($product_id, $qty){
         $cart_items = self::getCartItemsFromCookie();
 
         $existing_item = null;
@@ -57,15 +58,16 @@ class CartManagement {
             $cart_items[$existing_item]['quantity'] = $qty;
             $cart_items[$existing_item]['total_amount'] = $cart_items[$existing_item]['quantity'] * $cart_items[$existing_item]['unit_amount'];
         } else {
-            $product = Product::where('id', $product_id)->first(['id','name','price','featured_image']);
+            $product = Product::where('id', $product_id)->first(['id','name','slug','price','featured_image']);
             if($product){
                 $cart_items[] = [
                     'product_id' => $product_id,
                     'name' => $product->name,
+                    'slug' => $product->slug,
                     'featured_image' => $product->featured_image,
                     'quantity' => $qty,
                     'unit_amount' => $product->price,
-                    'total_amount' => $product->price
+                    'total_amount' => $product->price * $qty
                 ];
             }
         }

@@ -153,7 +153,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="flex flex-wrap items-center gap-4">
+                        <div class="flex flex-wrap items-center gap-4 font-heading">
                             <button wire:click.prevent="addToCart({{ $product->id }})"
                                 class="w-full inline-flex items-center justify-center px-4 py-2 rounded-md lg:w-2/5 text-white bg-accent hover:bg-accent/75 hover:shadow-md transition-all duration-300">
                                 <svg class="mr-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
