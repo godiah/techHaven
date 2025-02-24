@@ -1,11 +1,41 @@
-<div class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+<div class="w-full max-w-[85rem] py-6 px-4 sm:px-6 lg:px-8 mx-auto">
+    <!-- Bread Crumb -->
+    <div class="p-4 font-heading">
+        <ol class="flex items-center whitespace-nowrap">
+            <li class="inline-flex items-center">
+                <a wire:navigate
+                    class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+                    href="/products">
+                    <svg class="shrink-0 me-3 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                    </svg>
+                    Products
+                    <svg class="shrink-0 mx-2 size-4 text-gray-400 dark:text-neutral-600"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="inline-flex items-center text-xs md:text-sm font-semibold text-accent truncate dark:text-neutral-200"
+                aria-current="page">
+                Cart
+            </li>
+        </ol>
+    </div>
+
     <div class="container mx-auto px-4">
-        <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
         <div class="flex flex-col md:flex-row gap-4">
             <div class="md:w-3/4">
                 <div class="bg-white overflow-x-auto rounded-lg shadow-md p-6 mb-4">
                     <table class="w-full">
-                        <thead>
+                        <thead class="font-heading">
                             <tr>
                                 <th class="text-left font-semibold">Product</th>
                                 <th class="text-left font-semibold">Price</th>
@@ -14,7 +44,7 @@
                                 <th class="text-left font-semibold">Remove</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="font-body">
                             @forelse ($cart_items as $item)
                                 <tr wire:key='{{ $item['product_id'] }}'>
                                     <td class="py-4">
