@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/my-orders/{order_id}', MyOrderDetailsPage::class)->name('my-orders.show');
 
     Route::get('/success', SuccessPage::class)->name('success');
-    Route::get('cancel', CancelPage::class)->name('cancel');
+    Route::get('/cancel', CancelPage::class)->name('cancel');
     Route::get('/logout', function(){
         Auth::logout();
         return redirect('/');

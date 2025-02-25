@@ -16,17 +16,25 @@ use Livewire\Component;
 
 class CheckoutPage extends Component
 {
-    public $first_name;
-    public $last_name;
-    public $email;
-    public $phone;
-    public $county;
-    public $town;
-    public $estate;
-    public $house_no;
-    public $payment_method;
+    public $first_name, $last_name, $email, $phone, $county, $town, $estate, $house_no, $payment_method;
+
+    public $address_exists = false;
 
     public function mount(){
+        $address = Address::where('user_id', Auth::id())->first();
+
+        if ($address) {
+            $this->first_name = $address->first_name;
+            $this->last_name  = $address->last_name;
+            $this->phone      = $address->phone;
+            $this->email      = $address->email;
+            $this->county     = $address->county;
+            $this->town       = $address->town;
+            $this->estate     = $address->estate;
+            $this->house_no   = $address->house_no;
+            $this->address_exists = true;
+        }
+
         $cart_items = CartManagement::getCartItemsFromCookie();
         if(count($cart_items) == 0){
             return redirect()->route('products');
@@ -73,15 +81,28 @@ class CheckoutPage extends Component
         $order->shipping_method = 'none';
         $order->notes = 'Order placed by ' . Auth::user()->name;
 
-        $address = new Address();
-        $address->first_name = $this->first_name;
-        $address->last_name = $this->last_name;
-        $address->email = $this->email;
-        $address->phone = $this->phone;
-        $address->county = $this->county;
-        $address->town = $this->town;
-        $address->estate = $this->estate;
-        $address->house_no = $this->house_no;
+        if ($this->address_exists) {
+            $address = Address::where('user_id', Auth::id())->first();
+            $address->first_name = $this->first_name;
+            $address->last_name  = $this->last_name;
+            $address->phone      = $this->phone;
+            $address->email      = $this->email;
+            $address->county     = $this->county;
+            $address->town       = $this->town;
+            $address->estate     = $this->estate;
+            $address->house_no   = $this->house_no;
+            //$address->save();
+        }  else {
+            $address = new Address();
+            $address->first_name = $this->first_name;
+            $address->last_name = $this->last_name;
+            $address->email = $this->email;
+            $address->phone = $this->phone;
+            $address->county = $this->county;
+            $address->town = $this->town;
+            $address->estate = $this->estate;
+            $address->house_no = $this->house_no;
+        }        
 
         $redirect_url = '';
 
@@ -93,9 +114,11 @@ class CheckoutPage extends Component
         }
 
         $order->save();
+
         $address->order_id = $order->id;
         $address->user_id = Auth::user()->id;
         $address->save();
+        
         $order->items()->createMany($cart_items);
         CartManagement::clearCartItems();
 
@@ -108,6 +131,7 @@ class CheckoutPage extends Component
     {
         $cart_items = CartManagement::getCartItemsFromCookie();
         $grand_total = CartManagement::calculateGrandTotal($cart_items);
+
         return view('livewire.checkout-page',[
             'cart_items' => $cart_items,
             'grand_total' => $grand_total,
